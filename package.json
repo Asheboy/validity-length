@@ -6,6 +6,10 @@
   "scripts": {
     "test": "istanbul test ./node_modules/.bin/_mocha -- -R spec"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Asheboy/validity-length.git"
+  },
   "author": "Ash Summers",
   "license": "ISC",
   "dependencies": {
