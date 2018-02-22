@@ -1,6 +1,6 @@
 {
   "name": "validity-length",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Validity style validator to ensure the length of a property",
   "main": "validator.js",
   "scripts": {
@@ -10,7 +10,9 @@
     "type": "git",
     "url": "https://github.com/Asheboy/validity-length.git"
   },
-  "files": [ "validator.js" ],
+  "files": [
+    "validator.js"
+  ],
   "author": "Ash Summers",
   "license": "ISC",
   "devDependencies": {
