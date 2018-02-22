@@ -8,6 +8,10 @@ Validity style validator to ensure the length of a property
 npm install validity-length --save
 ```
 
+```
+yarn add validity-length
+```
+
 ## Usage
 
 Below is a simple example for usage with schemata and save:

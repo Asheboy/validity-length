@@ -10,9 +10,10 @@
     "type": "git",
     "url": "https://github.com/Asheboy/validity-length.git"
   },
+  "files": [ "validator.js" ],
   "author": "Ash Summers",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "validity": "^1.1.1"
