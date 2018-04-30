@@ -1,10 +1,8 @@
 var validity = require('validity')
 
 module.exports = function createValidator(min, max) {
+  min = min || Number.NEGATIVE_INFINITY
   max = max || Number.POSITIVE_INFINITY
-  if (min < 0) {
-    throw new RangeError('min must be >= 0')
-  }
 
   if (max < 1) {
     throw new RangeError('max must be >= 1')
@@ -20,11 +18,15 @@ module.exports = function createValidator(min, max) {
     }
 
     if (value.length >= min && value.length <= max) return cb(null)
-    var message = keyDisplayName + ' length must be '
-    if (max === Number.POSITIVE_INFINITY) {
-      message += 'at least ' + min
+    var message = keyDisplayName + ' must be '
+    if (min === max) {
+      message += max + ' in length'
+    } else if (min === Number.NEGATIVE_INFINITY) {
+      message += 'no more than ' + max + ' in length'
+    } else if (max === Number.POSITIVE_INFINITY) {
+      message += 'longer than ' + min + ' in length'
     } else {
-      message += 'between ' + min + ' and ' + max
+      message += 'between ' + min + ' and ' + max + ' in length'
     }
     cb(null, message)
   }
