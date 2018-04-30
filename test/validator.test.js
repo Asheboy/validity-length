@@ -113,7 +113,7 @@ describe('validity-length', function () {
     it('should fail validation when only a minimum and array contains less than minimum', function () {
       validate(1)('firstNames', 'First Names', { firstNames: [] }, function (error, validationError) {
         assert.equal(error, null)
-        assert.equal(validationError, 'First Names must be longer than 1 in length')
+        assert.equal(validationError, 'First Names must be at least 1 in length')
       })
     });
 

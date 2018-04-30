@@ -22,7 +22,7 @@ module.exports = function createValidator(min, max) {
     } else if (min === Number.NEGATIVE_INFINITY) {
       message += 'no more than ' + max + ' in length'
     } else if (max === Number.POSITIVE_INFINITY) {
-      message += 'longer than ' + min + ' in length'
+      message += 'at least ' + min + ' in length'
     } else {
       message += 'between ' + min + ' and ' + max + ' in length'
     }
