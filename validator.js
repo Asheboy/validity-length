@@ -1,5 +1,3 @@
-var validity = require('validity')
-
 module.exports = function createValidator(min, max) {
   min = min || Number.NEGATIVE_INFINITY
   max = max || Number.POSITIVE_INFINITY
