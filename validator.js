@@ -1,25 +1,33 @@
-var validity = require('validity')
-
 module.exports = function createValidator(min, max) {
-  if (min < 0) {
-    throw new RangeError('min must be >= 0')
-  }
+  min = min || Number.NEGATIVE_INFINITY
+  max = max || Number.POSITIVE_INFINITY
 
   if (max < 1) {
     throw new RangeError('max must be >= 1')
   }
 
-  return validity.createValidatorAllowingFailureMessageOverride(
-    validity.booleanToCallback(stringLengthValidator), '#{name} is an incorrect length')
+  function lengthValidator (key, keyDisplayName, object, cb) {
+    // Convert null and undefined to empty string so they can be length checked.
+    var value = object[key]
+    switch (value) {
+      case undefined:
+      case null:
+        value = ''
+    }
 
-  function stringLengthValidator (value) {
-      // Convert null and undefined to empty string so they can be length checked.
-      switch (value) {
-        case undefined:
-        case null:
-          value = ''
-      }
-
-      return (value.length >= min) && (value.length <= max)
+    if (value.length >= min && value.length <= max) return cb(null)
+    var message = keyDisplayName + ' must be '
+    if (min === max) {
+      message += max + ' in length'
+    } else if (min === Number.NEGATIVE_INFINITY) {
+      message += 'no more than ' + max + ' in length'
+    } else if (max === Number.POSITIVE_INFINITY) {
+      message += 'at least ' + min + ' in length'
+    } else {
+      message += 'between ' + min + ' and ' + max + ' in length'
+    }
+    cb(null, message)
   }
+
+  return lengthValidator
 }
