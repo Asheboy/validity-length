@@ -1,6 +1,6 @@
 {
   "name": "validity-length",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Validity style validator to ensure the length of a property",
   "main": "validator.js",
   "scripts": {
